@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poetry</title>
+    <link rel="stylesheet" href="poetry.css">
+</head>
+
+<body>
+    <footer class="verse-band is-loading" id="verse-band">
+        <div class="band-meta">
+            <p class="band-kicker">今日一句</p>
+            <p class="verse-origin" id="verse-origin"></p>
+            <p class="verse-author" id="verse-author"></p>
+            <p class="verse-category" id="verse-category"></p>
+            <button class="btn" id="refresh-btn" type="button">再来一句</button>
+        </div>
+        <p class="verse-text" id="verse-text">正在拾句……</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
+    <script src="poetry.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: #17130f;
+      color: #ede4d2;
+      font-family: "Kaiti SC", "STKaiti", "KaiTi", "SimSun", serif;
+    }
+
+    .verse-band {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 3rem;
+      padding: 4rem 5rem;
+    }
+
+    /* 左侧：出处信息 */
+    .band-meta { min-width: 12rem; }
+
+    .band-kicker {
+      color: #c13a2b;
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      margin-bottom: 1.5rem;
+    }
+
+    .verse-origin {
+      font-size: 1.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    .verse-author {
+      margin-top: 0.9rem;
+      font-size: 1.05rem;
+      color: #c9bda6;
+    }
+
+    .verse-category {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: #8a7d68;
+    }
+
+    .btn {
+      margin-top: 2.2rem;
+      padding: 0.85em 2em;
+      border: 1px solid #8a7d68;
+      background: transparent;
+      color: #ede4d2;
+      font-family: inherit;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .btn:hover { background: #ede4d2; color: #17130f; }
+    .btn:disabled { opacity: 0.45; cursor: wait; }
+
+    /* 右侧：竖排诗句 */
+    .verse-text {
+      writing-mode: vertical-rl;
+      font-size: 2.2rem;
+      line-height: 1.9;
+      letter-spacing: 0.15em;
+      max-height: 60vh;
+    }
+
+    /* 加载中的呼吸效果 */
+    .is-loading .verse-text {
+      opacity: 0.5;
+      animation: breathe 1.2s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: 0.35; }
+      50%      { opacity: 0.75; }
+    }

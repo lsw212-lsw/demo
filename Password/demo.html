@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password</title>
+    <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+    
+<div class="card">
+  <div class="pw-bar">
+    <div class="pw-text placeholder" id="pwText">生成的密码显示在这里</div>
+    <button class="icon-btn" id="copyBtn" title="复制">
+      <svg viewBox="0 0 24 24">
+        <rect x="8" y="8" width="12" height="13" rx="2.5"/>
+        <path d="M16 8V5.5A2.5 2.5 0 0 0 13.5 3H6a2.5 2.5 0 0 0-2.5 2.5V15"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="checks">
+    <label><input type="checkbox" data-group="upper" checked> Uppercase</label>
+    <label><input type="checkbox" data-group="lower" checked> Lowercase</label>
+    <label><input type="checkbox" data-group="number"> Numbers</label>
+    <label><input type="checkbox" data-group="symbol" checked> Symbols</label>
+  </div>
+
+  <div class="len-label">Password Length</div>
+  <div class="len-row">
+    <input type="range" id="lenRange" min="5" max="20" step="1" value="12">
+    <input type="number" class="len-num" id="lenNum" min="5" max="20" value="12">
+  </div>
+
+  <button class="gen-btn" id="genBtn">Generate Password</button>
+  <div class="hint" id="hint"></div>
+</div>
+
+<script src="demo.js"></script>
+</body>
+</html>

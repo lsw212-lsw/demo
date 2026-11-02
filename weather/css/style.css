@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* 默认背景，稍后由 JS 动态生成 Picsum 图片 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out;
+}
+
+/* 搜索框样式 */
+.search-container {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+#city-input {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    font-size: 16px;
+    width: 250px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#search-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: #4a90e2;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#search-btn:hover {
+    background: #357abd;
+}
+
+/* 核心：毛玻璃卡片 (对应截图 10 的要求) */
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); /* 兼容 Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2em;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 420px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.location h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.location p {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.weather-info h2 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.weather-info p {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+}
+
+.details {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
