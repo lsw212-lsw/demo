@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todos</title>
+  <link rel="stylesheet" href="todos.css">
+</head>
+
+<body>
+    <h1>todos</h1>
+
+  <div class="stack-wrap">
+    <div class="layer layer-1"></div>
+    <div class="layer layer-2"></div>
+    <div class="layer layer-3"></div>
+
+    <div class="card">
+      <div class="input-row">
+        <button id="toggle-all" class="toggle-all is-empty" type="button" title="全部完成 / 全部取消"></button>
+        <input id="new-todo" type="text" placeholder="What needs to be done?" autocomplete="off">
+      </div>
+
+      <ul id="todo-list" class="todo-list"></ul>
+
+      <div id="footer" class="footer" style="display:none">
+        <span id="count" class="count"></span>
+        <ul id="filters" class="filters">
+          <li><a href="#/all" data-filter="all">All</a></li>
+          <li><a href="#/active" data-filter="active">Active</a></li>
+          <li><a href="#/completed" data-filter="completed">Completed</a></li>
+        </ul>
+        <button id="clear-completed" class="clear-completed" type="button">Clear completed</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="credit">Written by Mancuoj</p>
+  <script src="todos.js"></script>
+</body>
+
+</html>

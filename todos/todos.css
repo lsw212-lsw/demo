@@ -1,0 +1,268 @@
+:root {
+    --bg: #f5f5f5;
+    --card: #fff;
+    --line: #e6e6e6;
+    --text: #4d4d4d;
+    --caption: #9c9c9c;
+    --muted: #b3b3b3;
+    --placeholder: #dcdcdc;
+    --title: rgba(175, 47, 47, .15);
+    --accent: #cc9a9a;
+    --accent-soft: #ead7d7;
+    --check: #5dc2af;
+    --circle: #cdd9de;
+    --ease: cubic-bezier(.25, .46, .45, .94);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px 16px 26px;
+    background-color: var(--bg);
+    background-image: linear-gradient(180deg, #ebeff5 0%, var(--bg) 170px);
+    color: var(--text);
+    font-family: Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1 {
+    margin: 30px 0 32px;
+    font-size: 100px;
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: 1px;
+    color: var(--title);
+    text-align: center;
+    user-select: none;
+  }
+
+  /* ---------- 卡片 + 纸叠阴影 ---------- */
+  .stack-wrap { position: relative; width: 100%; max-width: 620px; }
+
+  .card {
+    position: relative;
+    z-index: 3;
+    background: var(--card);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 25px 50px rgba(0, 0, 0, .1);
+  }
+
+  .layer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: var(--card);
+    z-index: 2;
+  }
+  .layer-1 { bottom: -7px;  margin: 0 10px; height: 8px; box-shadow: 0 5px 10px rgba(0, 0, 0, .10); }
+  .layer-2 { bottom: -13px; margin: 0 22px; height: 8px; box-shadow: 0 5px 10px rgba(0, 0, 0, .08); }
+  .layer-3 { bottom: -19px; margin: 0 34px; height: 6px; box-shadow: 0 6px 14px rgba(0, 0, 0, .06); }
+
+  /* ---------- 输入行 ---------- */
+  .input-row {
+    display: flex;
+    align-items: center;
+    min-height: 64px;
+    padding: 0 12px;
+  }
+
+  .toggle-all {
+    position: relative;
+    flex: 0 0 46px;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+  /* 下拉箭头 v：一个只带右边框+下边框的方块旋转 45° */
+  .toggle-all::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 13px;
+    height: 13px;
+    border-right: 2px solid var(--muted);
+    border-bottom: 2px solid var(--muted);
+    transform: translate(-50%, -72%) rotate(45deg);
+    transition: border-color .25s var(--ease);
+  }
+  .toggle-all.is-all-done::before { border-color: var(--text); }
+  .toggle-all.is-empty { visibility: hidden; }
+
+  #new-todo {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: none;
+    padding: 16px 8px 16px 6px;
+    font-family: inherit;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--text);
+  }
+  #new-todo::placeholder {
+    color: var(--placeholder);
+    font-style: italic;
+    opacity: 1;
+  }
+
+  /* ---------- 列表 ---------- */
+  .todo-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .todo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 58px;
+    padding: 4px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .toggle {
+    position: relative;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    margin-right: 14px;
+    padding: 0;
+    border: 1px solid var(--circle);
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    transition: border-color .25s var(--ease);
+  }
+  /* 对勾 ✓：只带左边框+下边框的小方块旋转 -45° */
+  .toggle::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 11px;
+    height: 6px;
+    border-left: 2px solid var(--check);
+    border-bottom: 2px solid var(--check);
+    transform: translate(-50%, -62%) rotate(-45deg);
+    opacity: 0;
+    transition: opacity .2s ease;
+  }
+  .todo.completed .toggle { border-color: var(--check); }
+  .todo.completed .toggle::before { opacity: 1; }
+
+  .todo-text {
+    flex: 1;
+    padding: 12px 36px 12px 10px;
+    font-size: 24px;
+    line-height: 1.4;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    transition: color .25s ease;
+  }
+  .todo.completed .todo-text {
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+
+  /* 悬浮才出现的 × */
+  .destroy {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    margin-top: -12px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .18s ease;
+  }
+  /* ×：两条旋转 ±45° 的小横条 */
+  .destroy::before,
+  .destroy::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 17px;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--accent);
+  }
+  .destroy::before { transform: translate(-50%, -50%) rotate(45deg); }
+  .destroy::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+  .todo:hover .destroy { opacity: 1; }
+  .destroy:hover::before,
+  .destroy:hover::after { background: #b06060; }
+
+  /* ---------- 底部工具条 ---------- */
+  .footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 48px;
+    padding: 6px 16px;
+    border-top: 1px solid var(--line);
+    font-size: 15px;
+    color: var(--caption);
+  }
+
+  .count { min-width: 110px; }
+
+  .filters {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+  }
+  .filters a {
+    display: inline-block;
+    padding: 3px 8px;
+    color: var(--caption);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    transition: border-color .22s var(--ease), color .22s ease;
+  }
+  .filters a:hover { color: var(--text); }
+  .filters a.selected { border-color: var(--accent-soft); color: var(--text); }
+
+  .clear-completed {
+    border: 0;
+    background: none;
+    padding: 4px 0;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--caption);
+    cursor: pointer;
+  }
+  .clear-completed:hover { color: var(--text); text-decoration: underline; }
+
+  .credit {
+    margin-top: auto;
+    padding-top: 52px;
+    color: var(--muted);
+    font-size: 15px;
+    user-select: none;
+  }
